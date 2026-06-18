@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#f5f5f5;padding:10px}
+#filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.fb{font-size:12px;padding:5px 12px;border-radius:99px;border:1px solid #ccc;background:#fff;cursor:pointer;color:#444}
+.fb.on{border-color:#333;background:#333;color:#fff}
+.fb.pos.on{background:#27500A;border-color:#27500A;color:#fff}
+.fb.neg.on{background:#791F1F;border-color:#791F1F;color:#fff}
+.fb.kri.on{background:#633806;border-color:#633806;color:#fff}
+#count{font-size:12px;color:#888;margin-bottom:8px}
+.r{display:flex;align-items:center;gap:10px;padding:10px;margin:0 0 6px;background:#fff;border:1px solid #eee;border-radius:8px}
+.q{flex:1;font-size:13px;color:#222}
+.g{font-size:11px;color:#777;border:1px solid #ddd;border-radius:4px;padding:2px 5px;white-space:nowrap}
+.v{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div id="filters">
+  <span style="font-size:12px;color:#888;align-self:center">Taal:</span>
+  <button class="fb on" data-type="lang" data-val="all">Alle</button>
+  <button class="fb" data-type="lang" data-val="nl">🇳🇱 NL</button>
+  <button class="fb" data-type="lang" data-val="en">🇬🇧 EN</button>
+  <span style="font-size:12px;color:#888;align-self:center;margin-left:6px">Sentiment:</span>
+  <button class="fb on" data-type="sent" data-val="all">Alle</button>
+  <button class="fb pos" data-type="sent" data-val="P">Positief</button>
+  <button class="fb neg" data-type="sent" data-val="N">Negatief</button>
+  <button class="fb kri" data-type="sent" data-val="K">Kritisch</button>
+</div>
+<div id="count"></div>
+<div id="list">
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Files.</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="P"><span class="q">Prettiger fietsen en oversteken te voet.</span><span class="g">NL</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Traffic jamming and fuel consumption</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="en" data-sent="N"><span class="q">Ik ervaar hinder</span><span class="g">EN</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Meer bijna ongelukken en frustratie onder automobilisten, scooters en fietsers</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="en" data-sent="N"><span class="q">Yes, traffic jams and the fact that i cant get anywhere in this city. RAISE IT!!!</span><span class="g">EN</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Voor wegbestuurders gevaar ivm vaker voorkomen bumperkleven</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">More stop and go, more traffic jams,</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Worden ze ongeduldig</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Rijden minder hard op plekken waar het is ingevoerd. Maar sommigen rijden juist nog steeds dezelfde snelheid als voorheen</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Langzamer autoverkeer, makkelijker oversteken</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Frustratie onder veel weggebruikers, automobilisten die 20km p.u. gaan rijden, sneller onterecht voorrang willen pakken (vooral fietsers en scooters)</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="en" data-sent="N"><span class="q">More people over the speed limit at all times whenever they can</span><span class="g">EN</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Taxi and Uber drivers are always speeding as usual, I see people trying to respect the speed limit once there are physical barriers like bumpers though</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="P"><span class="q">Meestal veiliger, maar soms ook ongeduldig en aan het bumperkleven wat voor de voorste auto gevaarlijk kan zijn</span><span class="g">NL</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="nl" data-sent="P"><span class="q">Niet meer planken want sommigen houden zich wel aan de 30km</span><span class="g">NL</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="en" data-sent="P"><span class="q">Kalmer optrekken</span><span class="g">EN</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="en" data-sent="P"><span class="q">Rijden rustiger</span><span class="g">EN</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Zorgen voor lange files</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="en" data-sent="K"><span class="q">Ik heb het idee dat het wel ongeveer goed geregeld is. Soms vraag ik me af om het ene stuk wel en het andere stuk niet. Maar dat is wel duidelijk te zien aan de markering op het wegdek.</span><span class="g">EN</span><span class="v" style="background:#FAEEDA;color:#633806">Kritisch</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">The slow reduction is impacting quick movement of cars and bicycle secondly there is no synchronisation with the traffic light. It affects fuel consumption.</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">T is tergend langzaam</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Onzin</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Er moeten meer wegen, zeker waar er een gescheiden fietspad is weer 50 km p.u. worden, beter voor de doorstroom en zorgt voor minder frustratie en gekke inhaalmomenten of dat er ineens fietsers of scooters onterecht voorrang pakken en daarmee veiliger.</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Because it is ridicoulus and statisticly unviable. Pollution of cars is statistically about 95% at a speed of 30 than 50. You have to drive 30 for longer and build more jams witch effectively results in higher pollution. Germany proves year by year that a higher speed limit is definitely accelerating traffic and minimizing pollution.</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="P"><span class="q">I think pedestarian &amp; bike only zones should be the next step, especially around the canals</span><span class="g">NL</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="nl" data-sent="P"><span class="q">Goed om in te voeren. Zorgt voor meer veiligheid</span><span class="g">NL</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="nl" data-sent="P"><span class="q">Ik ben er tevreden over. Ik rijd zelf auto, in de stad fiets ik vooral.</span><span class="g">NL</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="en" data-sent="N"><span class="q">We risk slowing traffic movement thus impacting the mood of drivers.</span><span class="g">EN</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">STOP HIERMEE, gewoon weer 50:80</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">Bullshit</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="en" data-sent="P"><span class="q">Voor het invoeren was het hoofdzakelijk terecht 50km p.u., maar idd sommige drukke voetganger gebieden zoals de 9-straatjes is terecht 30km p.u.</span><span class="g">EN</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="nl" data-sent="N"><span class="q">It is one if not of the most stupid decisions this city council has taken since i moved here 8 years ago.</span><span class="g">NL</span><span class="v" style="background:#FCEBEB;color:#791F1F">Negatief</span></div>
+<div class="r" data-lang="en" data-sent="K"><span class="q">I think stricter enforcement and/or physical barriers are needed, given the amount of violations I still observe, especially during night time</span><span class="g">EN</span><span class="v" style="background:#FAEEDA;color:#633806">Kritisch</span></div>
+<div class="r" data-lang="nl" data-sent="K"><span class="q">Veelal veiliger, maar niet te handhaven (wegdek niet in overeenkomstig met een 30 km weg), soms gevaarlijke situaties met ongeduldige bestuurders. Soms is het ook onnodig dat een weg 30 km is (vrijwel geen oversteekplaatsen en bebouwing)</span><span class="g">NL</span><span class="v" style="background:#FAEEDA;color:#633806">Kritisch</span></div>
+<div class="r" data-lang="en" data-sent="P"><span class="q">Het is veiliger geworden. Nu de straat aanpassen de komende decennia.</span><span class="g">EN</span><span class="v" style="background:#EAF3DE;color:#27500A">Positief</span></div>
+<div class="r" data-lang="en" data-sent="K"><span class="q">I don't think the goal to reduce CO2 was reached, although I feel safer as a pedestrian walking through the center of Amsterdam.</span><span class="g">EN</span><span class="v" style="background:#FAEEDA;color:#633806">Kritisch</span></div>
+</div>
+<script>
+var langVal='all', sentVal='all';
+function update(){
+  var rows=document.querySelectorAll('.r'), n=0;
+  rows.forEach(function(r){
+    var show=(langVal==='all'||r.dataset.lang===langVal)&&(sentVal==='all'||r.dataset.sent===sentVal);
+    r.classList.toggle('hidden',!show);
+    if(show) n++;
+  });
+  document.getElementById('count').textContent=n+' antwoorden';
+}
+document.querySelectorAll('.fb').forEach(function(b){
+  b.addEventListener('click',function(){
+    var type=this.dataset.type, val=this.dataset.val;
+    document.querySelectorAll('.fb[data-type="'+type+'"]').forEach(function(x){x.classList.remove('on')});
+    this.classList.add('on');
+    if(type==='lang') langVal=val; else sentVal=val;
+    update();
+  });
+});
+update();
+</script>
+</body>
+</html>
