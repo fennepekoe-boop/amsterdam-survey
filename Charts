@@ -109,7 +109,7 @@
   </div>
 
   <div class="card">
-    <p class="card-label">Does speed reduction increase air quality?</p>
+    <p class="card-label">Do people think air quality has increased since the speed reduction?</p>
     <div class="donut-row">
       <canvas id="chart1" width="64" height="64" role="img" aria-label="Donut chart: 47.1% yes, 52.9% no">47.1% yes, 52.9% no.</canvas>
       <div class="legend">
